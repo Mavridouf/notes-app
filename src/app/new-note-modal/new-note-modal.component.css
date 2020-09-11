@@ -1,0 +1,25 @@
+.newNoteModal {
+}
+
+.newNoteModal .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newNoteModal .header .title {
+  font-weight: bold;
+}
+
+.newNoteModal .modal .form {
+  display: flex;
+  flex-direction: column;
+}
+
+.newNoteModal .modal .form .input {
+  margin-top: 15px;
+}
+
+.newNoteModal .modal button {
+  margin-top: 15px;
+}

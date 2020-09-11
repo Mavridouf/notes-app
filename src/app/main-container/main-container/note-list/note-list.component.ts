@@ -27,7 +27,9 @@ export class NoteListComponent implements OnInit {
       .pipe(
         map((noteState) => {
           if (noteState) {
-            this.noteList = noteState.notes;
+            this.noteList = noteState.notes.slice().sort((n1, n2) => {
+              return new Date(n2.date).getTime() - new Date(n1.date).getTime();
+            });
             this.noteError = noteState.noteError;
             this.loading = noteState.loading;
           }

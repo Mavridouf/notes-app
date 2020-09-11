@@ -1,0 +1,74 @@
+<div class="newNoteModal">
+  <div class="modalGrid"></div>
+  <div class="modalContainer">
+    <div class="modal">
+      <div class="header">
+        <h1 class="title">New Note</h1>
+      </div>
+
+      <form class="form" [formGroup]="newNote">
+        <mat-form-field class="input">
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            placeholder="Title"
+            [formControl]="newNote.get('title')"
+          />
+          <mat-error *ngIf="checkError('title', 'required')"
+            >Title is required</mat-error
+          >
+          <mat-error *ngIf="checkError('title', 'minlength')"
+            >Title min length is 5</mat-error
+          >
+          <mat-error *ngIf="checkError('title', 'maxlength')"
+            >Title max length is 20</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="input">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            placeholder="Username"
+            [formControl]="newNote.get('userName')"
+          />
+          <mat-error *ngIf="checkError('userName', 'required')"
+            >UserName is required</mat-error
+          >
+          <mat-error *ngIf="checkError('userName', 'minlength')"
+            >UserName min length is 5</mat-error
+          >
+          <mat-error *ngIf="checkError('userName', 'maxlength')"
+            >UserName max length is 15</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="input">
+          <mat-label>Body</mat-label>
+          <textarea
+            matInput
+            placeholder="Body"
+            [formControl]="newNote.get('body')"
+          ></textarea>
+          <mat-error *ngIf="checkError('body', 'required')"
+            >Body is required</mat-error
+          >
+          <mat-error *ngIf="checkError('body', 'minlength')"
+            >Body min length is 10</mat-error
+          >
+          <mat-error *ngIf="checkError('body', 'maxlength')"
+            >Body max length is 150</mat-error
+          >
+        </mat-form-field>
+      </form>
+      <button
+        mat-flat-button
+        color="accent"
+        [disabled]="newNote.invalid"
+        (click)="addNote()"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
