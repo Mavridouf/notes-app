@@ -1,0 +1,27 @@
+<div class="noteListContainer">
+  <div class="spinnerContainer">
+    <div class="spinner">
+      <mat-spinner *ngIf="loading"></mat-spinner>
+    </div>
+  </div>
+  <div class="notesContainer">
+    <div *ngFor="let note of noteList | slice: 0:10" class="note">
+      <div class="upperRow">
+        <div class="flex-space-between">
+          <span class="title"> {{ note.title }}</span>
+          <span>{{ note.date | date }}</span>
+        </div>
+      </div>
+      <div class="subContent">
+        <mat-chip-list>
+          <mat-chip class="chip" color="accent" selected>
+            {{ note.userName }}</mat-chip
+          >
+        </mat-chip-list>
+      </div>
+      <div class="mainSection">
+        {{ note.body }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+.noteListContainer {
+}
+
+.noteListContainer .spinnerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.noteListContainer .spinnerContainer .spinner {
+  width: 48px;
+  height: 48px;
+  margin: auto;
+}
+
+.noteListContainer .notesContainer {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.noteListContainer .notesContainer .note {
+  width: 246px;
+  padding: 22px;
+  margin: 0 10px;
+  margin-bottom: 20px;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.noteListContainer .notesContainer .note .flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.noteListContainer .notesContainer .note .chip {
+  margin-top: 14px;
+}
+
+.noteListContainer .notesContainer .note .title {
+  font-weight: bold;
+  color: #333333;
+}
+
+.noteListContainer .notesContainer .note .mainSection {
+  margin-top: 10px;
+}
