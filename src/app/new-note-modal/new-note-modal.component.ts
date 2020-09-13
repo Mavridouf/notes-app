@@ -2,8 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import NoteState from 'src/classes/notes/notes.state';
-import * as NotesActions from '../../classes/notes/notes.actions';
+import NoteState from 'src/store/models/notes.state';
+import * as NotesActions from '../../store/actions/notes.actions';
 
 @Component({
   selector: 'app-new-note-modal',

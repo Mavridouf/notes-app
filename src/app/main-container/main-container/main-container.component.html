@@ -8,7 +8,8 @@
     </div>
   </div>
   <div>
-    <app-note-list></app-note-list>
+    <app-note-filters [noteService]="noteService"></app-note-filters>
+    <app-note-list [noteService]="noteService"></app-note-list>
   </div>
 </div>
 <app-new-note-modal

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as NotesActions from '../../../../classes/notes/notes.actions';
-import Note from '../../../../classes/notes/notes.model';
-import NoteState from '../../../../classes/notes/notes.state';
+import * as NotesActions from '../../../../store/actions/notes.actions';
+import Note from '../../../../store/models/notes.model';
+import NoteState from '../../../../store/models/notes.state';
+import { FiltersService } from 'src/services/filters.service';
 
 @Component({
   selector: 'app-note-list',
@@ -12,8 +13,10 @@ import NoteState from '../../../../classes/notes/notes.state';
   styleUrls: ['./note-list.component.css'],
 })
 export class NoteListComponent implements OnInit {
+  @Input() public noteService: FiltersService;
   private notes$: Observable<NoteState>;
-  private notesSubscription: Subscription;
+  private storeNotesSubscription: Subscription;
+  private serviceNotesSubscription: Subscription;
   public noteList: Note[] = [];
   public loading: boolean = false;
   private noteError: Error = null;
@@ -23,26 +26,36 @@ export class NoteListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.notesSubscription = this.notes$
+    this.storeNotesSubscription = this.notes$
       .pipe(
         map((noteState) => {
           if (noteState) {
-            this.noteList = noteState.notes.slice().sort((n1, n2) => {
-              return new Date(n2.date).getTime() - new Date(n1.date).getTime();
-            });
+            this.noteService.setNotes(
+              noteState.notes.slice().sort((n1, n2) => {
+                return (
+                  new Date(n2.date).getTime() - new Date(n1.date).getTime()
+                );
+              })
+            );
             this.noteError = noteState.noteError;
             this.loading = noteState.loading;
           }
         })
       )
       .subscribe();
+    this.serviceNotesSubscription = this.noteService.filteredList$.subscribe(
+      (notes) => (this.noteList = notes)
+    );
 
     this.store.dispatch(NotesActions.BeginGetNotesAction());
   }
 
   ngOnDestroy() {
-    if (this.notesSubscription) {
-      this.notesSubscription.unsubscribe();
+    if (this.storeNotesSubscription) {
+      this.storeNotesSubscription.unsubscribe();
+    }
+    if (this.serviceNotesSubscription) {
+      this.serviceNotesSubscription.unsubscribe();
     }
   }
 }

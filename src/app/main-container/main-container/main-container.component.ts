@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FiltersService } from 'src/services/filters.service';
 
 @Component({
   selector: 'app-main-container',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainContainerComponent implements OnInit {
   public showModal: boolean = false;
 
-  constructor() {}
+  constructor(public noteService: FiltersService) {}
 
   ngOnInit(): void {}
 

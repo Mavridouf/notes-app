@@ -5,11 +5,11 @@
     </div>
   </div>
   <div class="notesContainer">
-    <div *ngFor="let note of noteList | slice: 0:10" class="note">
+    <div *ngFor="let note of noteList" class="note">
       <div class="upperRow">
         <div class="flex-space-between">
           <span class="title"> {{ note.title }}</span>
-          <span>{{ note.date | date }}</span>
+          <span>{{ note.date | date: "short" }}</span>
         </div>
       </div>
       <div class="subContent">

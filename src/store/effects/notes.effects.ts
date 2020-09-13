@@ -4,8 +4,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import * as NotesActions from './notes.actions';
-import Note, { INodeResp } from './notes.model';
+import * as NotesActions from '../actions/notes.actions';
+import Note, { INodeResp } from '../models/notes.model';
 
 @Injectable()
 export class NotesEffects {
@@ -25,6 +25,26 @@ export class NotesEffects {
             return of(NotesActions.ErrorNotesAction(error));
           })
         )
+      )
+    )
+  );
+
+  createNotes$: Observable<Action> = createEffect(() =>
+    this.action$.pipe(
+      ofType(NotesActions.BeginCreateNoteAction),
+      mergeMap((action) =>
+        this.http
+          .post(this.ApiURL, JSON.stringify(action.payload), {
+            headers: { 'Content-Type': 'application/json' },
+          })
+          .pipe(
+            map((data: Note) => {
+              return NotesActions.SuccessCreateNoteAction({ payload: data });
+            }),
+            catchError((error: Error) => {
+              return of(NotesActions.ErrorNotesAction(error));
+            })
+          )
       )
     )
   );

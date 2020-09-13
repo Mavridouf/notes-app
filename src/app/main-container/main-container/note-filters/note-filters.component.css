@@ -1,0 +1,28 @@
+.noteFiltersContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.noteFiltersContainer .textInputContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.noteFiltersContainer .input {
+  margin-top: 15px;
+  width: 300px;
+}
+
+.noteFiltersContainer .radio {
+  margin-left: 25px;
+}
+
+.noteFiltersContainer .datepicker {
+  margin-top: 18px;
+  margin-right: 25px;
+  width: 300px;
+}

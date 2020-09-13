@@ -1,0 +1,120 @@
+<div class="noteFiltersContainer">
+  <mat-slide-toggle
+    [(ngModel)]="isChecked"
+    (toggleChange)="toggleChanged()"
+    class="example-margin"
+    color="accent"
+  >
+    Hide System Notes
+  </mat-slide-toggle>
+
+  <div class="textInputContainer">
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        placeholder="Title"
+        [formControl]="filters.get('titleFilter').get('value')"
+        (ngModelChange)="filterTitle()"
+      />
+    </mat-form-field>
+    <mat-radio-group
+      [(ngModel)]="titleFilterType"
+      (ngModelChange)="setTitleType()"
+    >
+      <mat-radio-button
+        class="radio"
+        [value]="type"
+        *ngFor="let type of filterTypes"
+      >
+        {{ type }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="textInputContainer">
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        placeholder="Username"
+        [formControl]="filters.get('usernameFilter').get('value')"
+        (ngModelChange)="filterUserName()"
+      />
+    </mat-form-field>
+    <mat-radio-group
+      [(ngModel)]="userNameFilterType"
+      (ngModelChange)="setUsernameType()"
+    >
+      <mat-radio-button
+        class="radio"
+        [value]="type"
+        *ngFor="let type of filterTypes"
+      >
+        {{ type }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="textInputContainer">
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Body</mat-label>
+      <input
+        matInput
+        placeholder="Body"
+        [formControl]="filters.get('bodyFilter').get('value')"
+        (ngModelChange)="filterBody()"
+      />
+    </mat-form-field>
+    <mat-radio-group
+      [(ngModel)]="bodyFilterType"
+      (ngModelChange)="setBodyType()"
+    >
+      <mat-radio-button
+        class="radio"
+        [value]="type"
+        *ngFor="let type of filterTypes"
+      >
+        {{ type }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="textInputContainer">
+    <mat-form-field appearance="fill" class="datepicker">
+      <mat-label>From</mat-label>
+      <input
+        matInput
+        [max]="filters.get('dateFilter').get('to').value"
+        [formControl]="filters.get('dateFilter').get('from')"
+        [matDatepicker]="pickerFrom"
+        [disabled]="filters.get('dateFilter').get('lastHour').value"
+        (dateChange)="filterDateByRange()"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="pickerFrom"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerFrom></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="datepicker">
+      <mat-label>To</mat-label>
+      <input
+        matInput
+        [min]="filters.get('dateFilter').get('from').value"
+        [formControl]="filters.get('dateFilter').get('to')"
+        [matDatepicker]="pickerTo"
+        [disabled]="filters.get('dateFilter').get('lastHour').value"
+        (dateChange)="filterDateByRange()"
+      />
+      <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerTo></mat-datepicker>
+    </mat-form-field>
+    <mat-checkbox
+      [formControl]="filters.get('dateFilter').get('lastHour')"
+      (change)="filterDateByLastHour()"
+      >Last Hour</mat-checkbox
+    >
+  </div>
+</div>
