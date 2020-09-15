@@ -29,4 +29,10 @@ export class UserListComponent implements OnInit {
       )
       .subscribe();
   }
+
+  ngOnDestroy(): void {
+    if (this.storeUsersSubscription) {
+      this.storeUsersSubscription.unsubscribe();
+    }
+  }
 }
