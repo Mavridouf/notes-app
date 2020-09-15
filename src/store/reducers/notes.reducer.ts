@@ -17,11 +17,14 @@ const reducer = createReducer(
     console.log(error);
     return { ...state, noteError: error, loading: false };
   }),
-  on(NotesActions.CreateNoteAction, (state: NoteState, note: Note) => {
-    return { ...state, ToDos: [...state.notes, note], ToDoError: null };
+  on(NotesActions.CreateNoteAction, (state: NoteState, { payload }) => {
+    return { ...state, NoteError: null };
   }),
   on(NotesActions.SuccessCreateNoteAction, (state: NoteState, { payload }) => {
-    return { ...state, ToDos: [...state.notes, payload], ToDoError: null };
+    return { ...state, NoteError: null };
+  }),
+  on(NotesActions.SuccessNoteAddedAction, (state: NoteState, { payload }) => {
+    return { ...state, notes: [...state.notes, payload], loading: false };
   }),
   on(NotesActions.FilterSystemNotesAction, (state: NoteState, { payload }) => {
     return {

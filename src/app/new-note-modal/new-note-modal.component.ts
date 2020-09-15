@@ -45,7 +45,7 @@ export class NewNoteModalComponent implements OnInit {
   public addNote() {
     this.closeModal.emit(true);
     this.store.dispatch(
-      NotesActions.BeginCreateNoteAction({
+      NotesActions.CreateNoteAction({
         payload: this.newNote.getRawValue(),
       })
     );

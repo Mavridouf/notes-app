@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +29,8 @@ import { NotesEffects } from '../store/effects/notes.effects';
 import { NoteListComponent } from './main-container/main-container/note-list/note-list.component';
 import { NewNoteModalComponent } from './new-note-modal/new-note-modal.component';
 import { NoteFiltersComponent } from './main-container/main-container/note-filters/note-filters.component';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -57,6 +60,7 @@ import { NoteFiltersComponent } from './main-container/main-container/note-filte
     MatCheckboxModule,
 
     HttpClientModule,
+    SocketIoModule.forRoot(config),
     StoreModule.forRoot({
       notes: notesReducer,
     }),

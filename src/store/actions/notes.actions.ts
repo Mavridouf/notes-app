@@ -12,16 +12,15 @@ export const ErrorNotesAction = createAction('[Notes] - Error', props<Error>());
 
 export const CreateNoteAction = createAction(
   '[Notes] - Create Note',
-  props<Note>()
+  props<{ payload: Note }>()
 );
-
-export const BeginCreateNoteAction = createAction(
-  '[Notes] - Begin Create Note',
+export const SuccessCreateNoteAction = createAction(
+  '[Notes] - Success Create Note',
   props<{ payload: Note }>()
 );
 
-export const SuccessCreateNoteAction = createAction(
-  '[Notes] - Success Create Note',
+export const SuccessNoteAddedAction = createAction(
+  '[Notes] - Success Added Note',
   props<{ payload: Note }>()
 );
 

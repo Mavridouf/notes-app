@@ -1,16 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import * as NotesActions from '../actions/notes.actions';
 import Note, { INodeResp } from '../models/notes.model';
+import { NotesSocketServiceService } from 'src/services/notes-socket-service.service';
 
 @Injectable()
 export class NotesEffects {
-  constructor(private http: HttpClient, private action$: Actions) {}
-
   private ApiURL: string = 'http://localhost:3000/api/notes';
 
   getNotes$: Observable<Action> = createEffect(() =>
@@ -31,7 +30,7 @@ export class NotesEffects {
 
   createNotes$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
-      ofType(NotesActions.BeginCreateNoteAction),
+      ofType(NotesActions.CreateNoteAction),
       mergeMap((action) =>
         this.http
           .post(this.ApiURL, JSON.stringify(action.payload), {
@@ -48,4 +47,17 @@ export class NotesEffects {
       )
     )
   );
+
+  @Effect()
+  liveNoteCreate$ = this.noteSocketService.liveNoteCreated$.pipe(
+    map((data: INodeResp) => {
+      return NotesActions.SuccessNoteAddedAction({ payload: data.notes[0] });
+    })
+  );
+
+  constructor(
+    private http: HttpClient,
+    private action$: Actions,
+    private noteSocketService: NotesSocketServiceService
+  ) {}
 }
