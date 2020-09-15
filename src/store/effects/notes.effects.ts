@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import * as NotesActions from '../actions/notes.actions';
 import Note, { INodeResp } from '../models/notes.model';
-import { NotesSocketServiceService } from 'src/services/notes-socket-service.service';
+import { NotesSocketServiceService } from 'src/services/notes/notes-socket-service.service';
 
 @Injectable()
 export class NotesEffects {

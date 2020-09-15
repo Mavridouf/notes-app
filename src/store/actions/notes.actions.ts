@@ -14,6 +14,7 @@ export const CreateNoteAction = createAction(
   '[Notes] - Create Note',
   props<{ payload: Note }>()
 );
+
 export const SuccessCreateNoteAction = createAction(
   '[Notes] - Success Create Note',
   props<{ payload: Note }>()

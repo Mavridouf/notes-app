@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FiltersService, TextFilterType } from 'src/services/filters.service';
+import {
+  FiltersService,
+  TextFilterType,
+} from 'src/services/filters/filters.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FiltersService } from 'src/services/filters.service';
+import { FiltersService } from 'src/services/filters/filters.service';
 
 @Component({
   selector: 'app-main-container',

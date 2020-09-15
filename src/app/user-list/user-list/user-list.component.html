@@ -1,1 +1,8 @@
-<div class="sideBar userSidebar"></div>
+<div class="sideBar userSidebar">
+  <div class="usersContainer">
+    <h3>Connected Users :</h3>
+    <p *ngFor="let user of users">
+      {{ user.name }}
+    </p>
+  </div>
+</div>

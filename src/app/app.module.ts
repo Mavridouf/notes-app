@@ -25,7 +25,11 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { notesReducer } from '../store/reducers/notes.reducer';
+import { usersReducer } from '../store/reducers/users.reducer';
+
 import { NotesEffects } from '../store/effects/notes.effects';
+import { UsersEffects } from '../store/effects/user.effects';
+
 import { NoteListComponent } from './main-container/main-container/note-list/note-list.component';
 import { NewNoteModalComponent } from './new-note-modal/new-note-modal.component';
 import { NoteFiltersComponent } from './main-container/main-container/note-filters/note-filters.component';
@@ -63,8 +67,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     SocketIoModule.forRoot(config),
     StoreModule.forRoot({
       notes: notesReducer,
+      users: usersReducer,
     }),
-    EffectsModule.forRoot([NotesEffects]),
+    EffectsModule.forRoot([NotesEffects, UsersEffects]),
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],

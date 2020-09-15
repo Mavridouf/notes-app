@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import * as NotesActions from '../../../../store/actions/notes.actions';
 import Note from '../../../../store/models/notes.model';
 import NoteState from '../../../../store/models/notes.state';
-import { FiltersService } from 'src/services/filters.service';
+import { FiltersService } from 'src/services/filters/filters.service';
 
 @Component({
   selector: 'app-note-list',
