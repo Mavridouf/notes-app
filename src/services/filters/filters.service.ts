@@ -10,6 +10,11 @@ export enum TextFilterType {
   STARTS_WITH = 'starts-with',
 }
 
+export enum SortFilter {
+  ASC = 'Ascending',
+  DESC = 'Descending',
+}
+
 export interface ITextFilter {
   value: string;
   type: string;
@@ -57,6 +62,11 @@ export class FiltersService {
   >(false);
   public toggleSystem$: Observable<boolean> = this._toggleSystem.asObservable();
 
+  private _sortFilter: BehaviorSubject<string> = new BehaviorSubject<string>(
+    SortFilter.DESC
+  );
+  public sortFilter$: Observable<string> = this._sortFilter.asObservable();
+
   public setNotes(notes: Note[]) {
     this._noteList.next(notes);
   }
@@ -81,6 +91,10 @@ export class FiltersService {
     this._filterDate.next(date);
   }
 
+  public setSortFilter(sortOrder: string) {
+    this._sortFilter.next(sortOrder);
+  }
+
   public get filteredList$(): Observable<Note[]> {
     return combineLatest(
       this.noteList$,
@@ -88,7 +102,8 @@ export class FiltersService {
       this.filterTitle$,
       this.filterUserName$,
       this.filterBody$,
-      this.filterDate$
+      this.filterDate$,
+      this.sortFilter$
     ).pipe(
       map((filter) => {
         let list: Note[] = this._noteList.value;
@@ -107,6 +122,7 @@ export class FiltersService {
           ? this._filterNotesByText(list, filter[4], 'body')
           : list;
         list = filter[5] ? this._filterNotesByDate(list, filter[5]) : list;
+        filter[6] ? this._sortNotesByDate(list, filter[6]) : null;
         return list;
       })
     );
@@ -196,6 +212,18 @@ export class FiltersService {
         return true;
       }
     });
+  }
+
+  private _sortNotesByDate(noteList: Note[], order: string): Note[] {
+    if (order === SortFilter.DESC) {
+      return noteList.sort((n1, n2) => {
+        return new Date(n2.date).getTime() - new Date(n1.date).getTime();
+      });
+    } else {
+      return noteList.sort((n1, n2) => {
+        return new Date(n1.date).getTime() - new Date(n2.date).getTime();
+      });
+    }
   }
   constructor() {}
 }

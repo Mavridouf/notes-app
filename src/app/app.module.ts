@@ -16,6 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list/user-list.component';
@@ -62,6 +63,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    MatSelectModule,
 
     HttpClientModule,
     SocketIoModule.forRoot(config),

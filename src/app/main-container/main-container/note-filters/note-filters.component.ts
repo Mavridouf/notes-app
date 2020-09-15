@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {
   FiltersService,
   TextFilterType,
+  SortFilter,
 } from 'src/services/filters/filters.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -31,6 +32,7 @@ export class NoteFiltersComponent implements OnInit {
       to: new FormControl(null),
       lastHour: new FormControl(false),
     }),
+    sortFilter: new FormControl(SortFilter.DESC),
   });
 
   public titleFilterType: string = TextFilterType.CONTAINS;
@@ -42,6 +44,8 @@ export class NoteFiltersComponent implements OnInit {
     TextFilterType.EXACT,
     TextFilterType.STARTS_WITH,
   ];
+
+  public sortFilters: string[] = [SortFilter.DESC, SortFilter.ASC];
   constructor() {}
 
   ngOnInit(): void {}
@@ -88,5 +92,9 @@ export class NoteFiltersComponent implements OnInit {
 
   public filterDateByLastHour(): void {
     this.noteService.setDateFilter(this.filters.get('dateFilter').value);
+  }
+
+  public sortByDate(): void {
+    this.noteService.setSortFilter(this.filters.get('sortFilter').value);
   }
 }
