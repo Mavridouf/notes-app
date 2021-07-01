@@ -4,7 +4,7 @@ import { FiltersService } from 'src/services/filters/filters.service';
 @Component({
   selector: 'app-main-container',
   templateUrl: './main-container.component.html',
-  styleUrls: ['./main-container.component.css'],
+  styleUrls: ['./main-container.component.scss'],
 })
 export class MainContainerComponent implements OnInit {
   public showModal: boolean = false;

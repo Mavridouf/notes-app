@@ -8,12 +8,11 @@ import * as NotesActions from '../../store/actions/notes.actions';
 @Component({
   selector: 'app-new-note-modal',
   templateUrl: './new-note-modal.component.html',
-  styleUrls: ['./new-note-modal.component.css'],
+  styleUrls: ['./new-note-modal.component.scss'],
 })
 export class NewNoteModalComponent implements OnInit {
-  @Output() public closeModal: EventEmitter<boolean> = new EventEmitter<
-    boolean
-  >();
+  @Output() public closeModal: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
 
   newNote: FormGroup = new FormGroup({
     title: new FormControl('', [
@@ -49,5 +48,9 @@ export class NewNoteModalComponent implements OnInit {
         payload: this.newNote.getRawValue(),
       })
     );
+  }
+
+  public dismissModal() {
+    this.closeModal.emit(true);
   }
 }

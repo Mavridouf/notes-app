@@ -34,6 +34,7 @@ import { UsersEffects } from '../store/effects/user.effects';
 import { NoteListComponent } from './main-container/main-container/note-list/note-list.component';
 import { NewNoteModalComponent } from './new-note-modal/new-note-modal.component';
 import { NoteFiltersComponent } from './main-container/main-container/note-filters/note-filters.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -50,6 +51,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    ScrollingModule,
 
     MatProgressSpinnerModule,
     MatChipsModule,

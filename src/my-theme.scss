@@ -1,0 +1,76 @@
+@import "@angular/material/theming";
+
+@include mat-core();
+
+$mat-kaiz-orange: (
+  50: #fcebe2,
+  100: #f9ceb6,
+  200: #f5ad86,
+  300: #f08c55,
+  400: #ed7430,
+  500: #ea5b0c,
+  600: #e7530a,
+  700: #e44908,
+  800: #e14006,
+  900: #db2f03,
+  A100: #ffffff,
+  A200: #ffd6cf,
+  A400: #ffab9c,
+  A700: #ff9583,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(white, 0.87),
+    600: rgba(white, 0.87),
+    700: rgba(white, 0.87),
+    800: rgba(white, 0.87),
+    900: rgba(white, 0.87),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
+  ),
+);
+
+$mat-kaiz-blue: (
+  50: #e3edfa,
+  100: #b8d1f2,
+  200: #89b2ea,
+  300: #5a93e1,
+  400: #367cda,
+  500: #1365d4,
+  600: #115dcf,
+  700: #0e53c9,
+  800: #0b49c3,
+  900: #0637b9,
+  A100: #e3e9ff,
+  A200: #b0c2ff,
+  A400: #7d9aff,
+  A700: #6486ff,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(white, 0.87),
+    500: rgba(white, 0.87),
+    600: rgba(white, 0.87),
+    700: rgba(white, 0.87),
+    800: rgba(white, 0.87),
+    900: rgba(white, 0.87),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
+  ),
+);
+
+$primary: mat-palette($mat-kaiz-blue);
+$accent: mat-palette($mat-kaiz-orange);
+
+$my-theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($my-theme);

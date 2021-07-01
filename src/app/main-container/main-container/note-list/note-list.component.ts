@@ -10,7 +10,7 @@ import { FiltersService } from 'src/services/filters/filters.service';
 @Component({
   selector: 'app-note-list',
   templateUrl: './note-list.component.html',
-  styleUrls: ['./note-list.component.css'],
+  styleUrls: ['./note-list.component.scss'],
 })
 export class NoteListComponent implements OnInit {
   @Input() public noteService: FiltersService;

@@ -5,23 +5,25 @@
     </div>
   </div>
   <div class="notesContainer">
-    <div *ngFor="let note of noteList" class="note">
-      <div class="upperRow">
-        <div class="flex-space-between">
-          <span class="title"> {{ note.title }}</span>
-          <span>{{ note.date | date: "short" }}</span>
+    <cdk-virtual-scroll-viewport [itemSize]="136" style="height: 600px">
+      <div *cdkVirtualFor="let note of noteList" class="note">
+        <div class="upperRow">
+          <div class="flex-space-between">
+            <span class="title"> {{ note.title }}</span>
+            <span>{{ note.date | date: "short" }}</span>
+          </div>
+        </div>
+        <div class="subContent">
+          <mat-chip-list>
+            <mat-chip class="chip" color="accent" selected>
+              {{ note.userName }}</mat-chip
+            >
+          </mat-chip-list>
+        </div>
+        <div class="mainSection">
+          {{ note.body }}
         </div>
       </div>
-      <div class="subContent">
-        <mat-chip-list>
-          <mat-chip class="chip" color="accent" selected>
-            {{ note.userName }}</mat-chip
-          >
-        </mat-chip-list>
-      </div>
-      <div class="mainSection">
-        {{ note.body }}
-      </div>
-    </div>
+    </cdk-virtual-scroll-viewport>
   </div>
 </div>

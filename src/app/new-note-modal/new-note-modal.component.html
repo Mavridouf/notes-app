@@ -4,6 +4,9 @@
     <div class="modal">
       <div class="header">
         <h1 class="title">New Note</h1>
+        <button mat-icon-button aria-label="Close" (click)="dismissModal()">
+          <mat-icon>close</mat-icon>
+        </button>
       </div>
 
       <form class="form" [formGroup]="newNote">
@@ -62,8 +65,9 @@
         </mat-form-field>
       </form>
       <button
+        style="float: right"
         mat-flat-button
-        color="accent"
+        color="primary"
         [disabled]="newNote.invalid"
         (click)="addNote()"
       >

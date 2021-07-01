@@ -4,6 +4,11 @@
   flex-direction: column;
   justify-content: space-evenly;
   flex-wrap: wrap;
+
+  .toggle {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 }
 
 .noteFiltersContainer .textInputContainer {

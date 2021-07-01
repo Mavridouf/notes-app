@@ -9,7 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-note-filters',
   templateUrl: './note-filters.component.html',
-  styleUrls: ['./note-filters.component.css'],
+  styleUrls: ['./note-filters.component.scss'],
 })
 export class NoteFiltersComponent implements OnInit {
   @Input() noteService: FiltersService;

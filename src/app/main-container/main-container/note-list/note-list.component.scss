@@ -13,14 +13,8 @@
   margin: auto;
 }
 
-.noteListContainer .notesContainer {
-  display: flex;
-  justify-content: start;
-  flex-wrap: wrap;
-}
-
 .noteListContainer .notesContainer .note {
-  width: 246px;
+  width: 92%;
   padding: 22px;
   margin: 0 10px;
   margin-bottom: 20px;

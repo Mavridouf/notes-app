@@ -1,0 +1,30 @@
+.mainContainerComponent {
+  padding-left: 200px;
+  max-width: 1240px;
+  height: 100%;
+  margin: auto;
+}
+
+.mainContainerComponent .container {
+  margin: auto;
+  margin-top: 25px;
+}
+
+.mainContainerComponent .container .header {
+  display: flex;
+}
+
+.mainContainerComponent .container .header .title {
+  font-family: Rubik Mono One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0.32em;
+  margin-bottom: 0;
+  color: #333333;
+}
+
+.mainContainerComponent .container .header button {
+  margin-left: 186px;
+}
